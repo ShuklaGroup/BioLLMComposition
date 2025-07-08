@@ -1,4 +1,4 @@
-## Integrating Large Language Models to Learn Biophysical Interactions [[Preprint](https://arxiv.org/abs/2503.21017)]
+## Two for the Price of One: Integrating Large Language Models to Learn Biophysical Interactions [[Preprint](https://arxiv.org/abs/2503.21017)]
 
 ![TOC](toc.jpg) 
 
