@@ -1,11 +1,26 @@
+import math
+import torch
+import random
+import matplotlib
+import numpy as np
+import pandas as pd
+from torch import nn
+from tqdm import tqdm
+from torch.optim import Adam
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
+from sklearn.decomposition import PCA
+from torch.utils.data import Dataset, DataLoader
+from torch.optim.lr_scheduler import ExponentialLR
+from transformers import AutoModelForMaskedLM, AutoTokenizer
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# Hyperparameters
 LR = 1e-3
 EPOCHS = 100
 VERBOSE = False
 
-#@title Load mhc data
-import pandas as pd
-
-# Load data frames
+# Load MHC data set
 MHCtrain = pd.read_csv('./combo_1and2_train.tsv', sep='\t')
 MHCval = pd.read_csv('./combo_1and2_valid.tsv', sep='\t')
 
@@ -15,7 +30,7 @@ train_labs = MHCtrain['binder'].tolist()
 val_seqs = MHCval['target_chainseq'].tolist()
 val_labs = MHCval['binder'].tolist()
 
-# Preprocess sequences as the protein and peptide are separated by '/'
+# Preprocess sequences (protein and peptide are separated by '/')
 mhc_train_pep = []
 mhc_train_rec = []
 mhc_train_lab = []
@@ -40,32 +55,9 @@ for i, s in enumerate(val_seqs):
     except:
         pass
 
-# print(len(mhc_train_pep))
-# print(len(mhc_train_rec))
-# print(len(mhc_train_lab))
-# print(sum(mhc_train_lab)/len(mhc_train_lab))
-# print(len(mhc_val_pep))
-# print(len(mhc_val_rec))
-# print(len(mhc_val_lab))
-# print(sum(mhc_val_lab)/len(mhc_val_lab))
-
-#@title Load language models
-import math
-import torch
-import random
-import numpy as np
-import pandas as pd
-from torch import nn
-from tqdm import tqdm
-from torch.optim import Adam
-from torch.optim.lr_scheduler import ExponentialLR
-from transformers import AutoModelForMaskedLM, AutoTokenizer
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+# Load pLM and PLM models
 esm_layers = 6
 esm_params = 8
-
-# Load pLM and PLM models
 plm = AutoModelForMaskedLM.from_pretrained(f'facebook/esm2_t{esm_layers}_{esm_params}M_UR50D').to(device).eval()
 PLM = AutoModelForMaskedLM.from_pretrained(f'facebook/esm2_t{esm_layers}_{esm_params}M_UR50D').to(device).eval()
 tokenizer = AutoTokenizer.from_pretrained(f'facebook/esm2_t{esm_layers}_{esm_params}M_UR50D')
@@ -78,10 +70,6 @@ def get_mean_rep(model_name, sequence):
     representations = results.hidden_states[-1][0]
     mean_embedding = representations[1:len(sequence)+1].mean(dim=0)
     return mean_embedding.cpu().numpy()
-    
-#@title Extract sequence embeddings
-from tqdm import tqdm
-from torch.utils.data import Dataset, DataLoader
 
 # Custom data set class for peptide-protein pairs
 class mhcdataset(Dataset):
@@ -129,7 +117,7 @@ train_dataloader = DataLoader(train_data_set, batch_size=128, shuffle=True)
 test_data_set = mhcdataset(peptide_embs_val, protein_embs_val, np.array(mhc_val_lab), pep_tokens_val, pro_tokens_val)
 test_dataloader = DataLoader(test_data_set, batch_size=128, shuffle=True)
 
-#@title Train concatenation model
+# Train model on peptide embeddings only
 print('Peptide embs only')
 
 # Train the model 3 independent times. Report the highest performance on the test set each time.
@@ -190,7 +178,7 @@ for n in range(3):
             for batch in test_dataloader:
                 peptide_embs, _, labels, _, _ = batch
 
-                # Concatenate, forward pass, compute loss
+                # forward pass, compute loss
                 peptide_embs, labels = peptide_embs.to(device), labels.to(device)
                 outputs = model(peptide_embs)
                 loss = criterion(outputs, labels)
@@ -212,14 +200,7 @@ for n in range(3):
     # Print the best performance over all 500 epochs
     print(best_test_acc)
 
-#@title Visualization for concatenation
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-
-# Concatenate
+# Visualize peptide embeddings
 embs_cat = peptide_embs_val
 
 # Perform PCA
@@ -241,7 +222,7 @@ plt.tick_params(axis='both', which='major', labelsize=18)
 plt.savefig('./peptide_only.png', dpi=600, bbox_inches='tight')
 plt.close()
 
-#@title Train concatenation model
+# Train baseline model on protein embeddings only
 print('Protein embs only')
 
 # Train the model 3 independent times. Report the highest performance on the test set each time.
@@ -324,14 +305,7 @@ for n in range(3):
     # Print the best performance over all 500 epochs
     print(best_test_acc)
 
-#@title Visualization for concatenation
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-
-# Concatenate
+# Visualize protein embeddings
 embs_cat = protein_embs_val
 
 # Perform PCA
