@@ -1,4 +1,4 @@
-# Integrating Large Language Models to Learn Biophysical Interactions
+## Integrating Large Language Models to Learn Biophysical Interactions
 [Preprint](https://arxiv.org/abs/2503.21017)
 
 Deep learning models have become fundamental tools in drug design. In particular, large language models trained on biochemical sequences learn feature vectors that guide drug discovery through virtual screening. However, such models do not capture the molecular interactions important for binding affinity and specificity. Therefore, there is a need to 'compose' representations from distinct biological modalities to effectively represent molecular complexes. We present an overview of the methods to combine molecular representations and argue that improvements in both speed and accuracy are possible by learning to merge the representations from internal layers of domain specific biological language models. We demonstrate that 'composing' biochemical language models performs similar or better than standard methods representing molecular interactions despite having significantly fewer features. 
