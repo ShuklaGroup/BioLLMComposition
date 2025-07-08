@@ -8,7 +8,7 @@ Deep learning models have become fundamental tools in drug design. In particular
 
 Citation:
 ```
-@misc{clark2025priceoneintegratinglarge,
+@misc{BioLLMComposition.
       title={Two for the Price of One: Integrating Large Language Models to Learn Biophysical Interactions}, 
       author={Joseph D. Clark and Tanner J. Dean and Diwakar Shukla},
       year={2025},
