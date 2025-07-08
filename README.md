@@ -1,5 +1,5 @@
-## Integrating Large Language Models to Learn Biophysical Interactions
-[Preprint](https://arxiv.org/abs/2503.21017)
+## Integrating Large Language Models to Learn Biophysical Interactions(https://arxiv.org/abs/2503.21017)
+
 
 ![TOC](toc.jpg) 
 
