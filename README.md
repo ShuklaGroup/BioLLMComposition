@@ -1,5 +1,7 @@
 ## Integrating Large Language Models to Learn Biophysical Interactions [[Preprint](https://arxiv.org/abs/2503.21017)]
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jjoecclark/PepFusion/blob/main/examples/PepFusion.ipynb)
+
 ![TOC](toc.jpg) 
 
 <div align="justify">
