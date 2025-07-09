@@ -9,7 +9,7 @@ Large language models (LLMs) trained on biochemical sequences learn feature vect
 </div>
 
 ### Quick Start
-Our [Google Colab Notebook](https://colab.research.google.com/github/jjoecclark/PepFusion/blob/main/examples/PepFusion.ipynb) compares and visualizes embeddings from four multimodal representation strategies.
+Our [Google Colab Notebook](https://colab.research.google.com/github/jjoecclark/BioLLMComposition/blob/main/BioLLMComposition.ipynb)) compares and visualizes embeddings from four multimodal representation strategies.
 
 ### Citation:
 ```
