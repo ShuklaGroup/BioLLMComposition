@@ -12,7 +12,7 @@ Large language models (LLMs) trained on biochemical sequences learn feature vect
 Our [Google Colab Notebook](https://colab.research.google.com/github/jjoecclark/BioLLMComposition/blob/main/BioLLMComposition.ipynb) compares and visualizes embeddings from four multimodal representation strategies.
 
 ### Citation:
-```
+```bibtex
 @misc{BioLLMComposition.
       title={Two for the Price of One: Integrating Large Language Models to Learn Biophysical Interactions}, 
       author={Joseph D. Clark and Tanner J. Dean and Diwakar Shukla},
