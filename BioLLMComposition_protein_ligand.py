@@ -138,9 +138,6 @@ for n in range(3):
     # Simple model trained on concatenated protein embeddings
     model = torch.nn.Sequential(
         torch.nn.Linear(320, 2),
-        #torch.nn.ReLU(),
-        #torch.nn.Linear(128, 2)
-        #torch.nn.Softmax(dim=1)
     )
 
     # Move to device, define optimizer, loss
@@ -258,9 +255,6 @@ for n in range(3):
     # Simple model trained on concatenated ligand-protein embeddings
     model = torch.nn.Sequential(
         torch.nn.Linear(768, 2),
-        #torch.nn.ReLU(),
-        #torch.nn.Linear(128, 2)
-        #torch.nn.Softmax(dim=1)
     )
 
     # Move to device, define optimizer, loss
@@ -376,9 +370,6 @@ for n in range(3):
     # Simple model trained on concatenated protein-ligand embeddings
     model = torch.nn.Sequential(
         torch.nn.Linear(1088, 2),
-        #torch.nn.ReLU(),
-        #torch.nn.Linear(128, 2)
-        #torch.nn.Softmax(dim=1)
     )
 
     # Move to device, define optimizer, loss
@@ -674,9 +665,6 @@ class AttentionModel(nn.Module):
     self.lig_proj = nn.Linear(768,320) #NOTE: Need to project ligand to same dimensionality
     self.prediction_head = torch.nn.Sequential(
         torch.nn.Linear(320, 2)
-        # torch.nn.ReLU(),
-        # torch.nn.Linear(128, 2),
-        #torch.nn.Softmax(dim=1)
     )
     self.post_attn_norm = nn.LayerNorm(320)
     # Freeze the anchor and augment models
@@ -849,9 +837,6 @@ class CompositionModel(nn.Module):
     ])
     self.prediction_head = torch.nn.Sequential(
         torch.nn.Linear(320, 2),
-        #torch.nn.GELU(),
-        #torch.nn.Linear(64, 2)
-        #torch.nn.Softmax(dim=1)
     )
     self.projection_chems = nn.ModuleList([
         nn.Linear(768,320) for i in range(len(target_layers))
