@@ -132,9 +132,6 @@ for n in range(3):
     # Simple model trained on concatenated peptide-protein embeddings
     model = torch.nn.Sequential(
         torch.nn.Linear(320, 2),
-        # torch.nn.ReLU(),
-        # torch.nn.Linear(128, 2),
-        # torch.nn.Softmax(dim=1)
     )
 
     # Move to device, define optimizer, loss
@@ -236,9 +233,6 @@ for n in range(3):
     # Simple model trained on concatenated peptide-protein embeddings
     model = torch.nn.Sequential(
         torch.nn.Linear(320, 2),
-        # torch.nn.ReLU(),
-        # torch.nn.Linear(128, 2),
-        # torch.nn.Softmax(dim=1)
     )
 
     # Move to device, define optimizer, loss
@@ -339,9 +333,6 @@ for n in range(3):
     # Simple model trained on concatenated peptide-protein embeddings
     model = torch.nn.Sequential(
         torch.nn.Linear(640, 2),
-        # torch.nn.ReLU(),
-        # torch.nn.Linear(128, 2),
-        # torch.nn.Softmax(dim=1)
     )
 
     # Move to device, define optimizer, loss
@@ -603,8 +594,6 @@ class AttentionModel(nn.Module):
     self.attn = nn.MultiheadAttention(320, 1, batch_first=True)
     self.prediction_head = torch.nn.Sequential(
         torch.nn.Linear(320, 2),
-        # torch.nn.ReLU(),
-        # torch.nn.Linear(128, 2),
     )
     self.post_attn_norm = nn.LayerNorm(320)
     # Freeze the anchor and augment models
@@ -759,8 +748,6 @@ class CompositionModel(nn.Module):
     ])
     self.prediction_head = torch.nn.Sequential(
         torch.nn.Linear(320, 2),
-        # torch.nn.ReLU(),
-        # torch.nn.Linear(128, 2),
     )
     self.esm_layers = 6
     # Freeze the anchor and augment models
