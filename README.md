@@ -12,7 +12,7 @@ Large language models (LLMs) trained on biochemical sequences learn feature vect
 Our [Google Colab Notebook](https://colab.research.google.com/github/jjoecclark/BioLLMComposition/blob/main/BioLLMComposition.ipynb) compares and visualizes embeddings from four multimodal representation strategies.
 
 ### Python Scripts
-You can also run each experiment as a standalone python script. We reccomend using `Python 3.10.18`.
+You can also run each experiment and generate the corresponding plots using a standalone python script. We reccomend using `Python 3.10.18`.
 ```shell
 git clone https://github.com/ShuklaGroup/BioLLMComposition
 cd BioLLMComposition
