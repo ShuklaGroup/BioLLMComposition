@@ -1,4 +1,4 @@
-## Learning Physical Interactions to Build Chemical World Models [[Preprint](https://arxiv.org/abs/2503.21017)]
+## Learning Physical Interactions to Compose Biological Large Language Models [[Preprint](https://arxiv.org/abs/2503.21017)]
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jjoecclark/BioLLMComposition/blob/main/BioLLMComposition.ipynb)
 
