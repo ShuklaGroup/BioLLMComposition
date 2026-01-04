@@ -1,6 +1,6 @@
 ## Learning Physical Interactions to Compose Biological LLMs [[Preprint](https://arxiv.org/abs/2503.21017)]
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jjoecclark/BioLLMComposition/blob/main/BioLLMComposition.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ShuklaGroup/BioLLMComposition/blob/main/BioLLMComposition.ipynb)
 
 ![TOC](toc.jpg) 
 
