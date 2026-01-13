@@ -1,4 +1,4 @@
-## Learning Physical Interactions to Compose Biological LLMs [[Preprint](https://arxiv.org/abs/2503.21017)]
+## Learning Physical Interactions to Compose Biological LLMs [[Paper](https://www.nature.com/articles/s42004-025-01883-7)]
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ShuklaGroup/BioLLMComposition/blob/main/BioLLMComposition.ipynb)
 
@@ -22,13 +22,15 @@ python BioLLMComposition_protein_ligand.py
 
 ### Citation:
 ```bibtex
-@misc{BioLLMComposition.
-      title={Two for the Price of One: Integrating Large Language Models to Learn Biophysical Interactions}, 
-      author={Joseph D. Clark and Tanner J. Dean and Diwakar Shukla},
-      year={2025},
-      eprint={2503.21017},
-      archivePrefix={arXiv},
-      primaryClass={q-bio.BM},
-      url={https://arxiv.org/abs/2503.21017}, 
+@article{Clark2026,
+      title = {Learning physical interactions to compose biological large language models},
+      ISSN = {2399-3669},
+      url = {http://dx.doi.org/10.1038/s42004-025-01883-7},
+      DOI = {10.1038/s42004-025-01883-7},
+      journal = {Communications Chemistry},
+      publisher = {Springer Science and Business Media LLC},
+      author = {Clark,  Joseph D. and Dean,  Tanner J. and Shukla,  Diwakar},
+      year = {2026},
+      month = jan 
 }
 ```
